@@ -1,25 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';  
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [images, setImages] = useState([]); 
+  const [previewUrls, setPreviewUrls] = useState([]); 
+
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+    setImages(files);
+    setPreviewUrls(files.map(file => URL.createObjectURL(file))); 
+  };
+
+
+return ( 
+    <div style = {{padding: "2rem"}}>  
+      <h1> Birdwatcher Image Upload</h1>
+      <input type = "file" multiple accept = "image/*" onChange = {handleFileChange} />
+      <div style = {{display: "flex", flexWrap: "wrap", marginTop: "1rem"}}> 
+        {previewUrls.map((url, index) => (
+          <img key = {index} src = {url} alt = "preview" width = "150" stype = {{margin: "0.5rem", borderRadius: "8px"}} /> 
+        ))}
+      </div> 
+    </div>   
+  )
 }
 
 export default App;

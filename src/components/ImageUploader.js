@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import styles from './ImageUploader.module.css';
 
-function ImageUploader({ onUpload }) {
+export default function ImageUploader({ onUpload }) {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [previews, setPreviews] = useState([]);
 
@@ -11,10 +12,6 @@ function ImageUploader({ onUpload }) {
         // Generate preview URLs
         const previewUrls = files.map(file => URL.createObjectURL(file));
         setPreviews(previewUrls);
-
-        if (onUpload) {
-            onUpload(files);
-        
     };
 
     const handleUpload = () => {
@@ -24,33 +21,40 @@ function ImageUploader({ onUpload }) {
     };
 
     return (
-        <div className="p-4 border rounded shadow">
+        <div className={styles.uploadContainer}>
             <input
+                id="fileInput"
                 type="file"
                 accept="image/*"
                 multiple
                 onChange={handleFileChange}
+                className={styles.fileInput}
             />
+            <label htmlFor="fileInput" className={styles.fileInputLabel}>
+                Choose images or drag and drop
+            </label>
+            
             {previews.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-2">
+                <div className={styles.previewContainer}>
                     {previews.map((url, index) => (
                         <img
                             key={index}
                             src={url}
                             alt={`Preview ${index}`}
-                            className="w-32 h-32 object-cover rounded"
+                            className={styles.previewImage}
                         />
                     ))}
                 </div>
             )}
-            <button
-                onClick={handleUpload}
-                className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
-            >
-                Upload
-            </button>
+            
+            {previews.length > 0 && (
+                <button
+                    onClick={handleUpload}
+                    className={styles.uploadButton}
+                >
+                    Upload {previews.length} {previews.length === 1 ? 'Image' : 'Images'}
+                </button>
+            )}
         </div>
     );
 }
-
-export default ImageUploader;

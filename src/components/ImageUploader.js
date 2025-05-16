@@ -14,7 +14,7 @@ export default function ImageUploader({ onUpload }) {
 
         if (onUpload) {
             onUpload(files);
-        }
+        
     };
 
     const handleUpload = () => {

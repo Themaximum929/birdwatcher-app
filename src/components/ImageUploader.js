@@ -4,12 +4,13 @@ function ImageUploader({ onUpload}) {
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null);   
 
-    const handleChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setImage(file);
-            setPreview(URL.createObjectURL(file));  
-        }
+    const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+    setSelectedImages(files);
+
+    if (onUpload) {
+        onUpload(files); // Pass array of files
+    }
     };
 
     const handleUpload = () => {
@@ -20,7 +21,7 @@ function ImageUploader({ onUpload}) {
 
     return (
         <div className = "p-4 border rounded shadow">
-            <input type = "file" accept = "image/*" onChange = {handleChange} />
+            <input type = "file" accept = "image/*" multiple onChange = {handleFileChange} />
             {preview && (
                 <div className = "mt-2">
                     <img src = {preview} alt = "Preview" className = "w-32 h-32 object-cover rounded" />

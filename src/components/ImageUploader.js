@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ImageUploader({ onUpload }) {
+export default function ImageUploader({ onUpload }) {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [previews, setPreviews] = useState([]);
 
@@ -52,5 +52,3 @@ function ImageUploader({ onUpload }) {
         </div>
     );
 }
-
-export default ImageUploader;

@@ -1,0 +1,50 @@
+{
+  "api": {
+    "birdrecognitionapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "BirdIdentification"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "BirdIdentification": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "providerPlugin": "awscloudformation",
+      "service": "S3AndCloudFront"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_BirdIdentification_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "BirdIdentification"
+        }
+      ]
+    },
+    "AMPLIFY_function_BirdIdentification_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "BirdIdentification"
+        }
+      ]
+    }
+  }
+}

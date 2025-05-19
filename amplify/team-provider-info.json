@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-birdwatcherapp-dev-d4f83-authRole",
+      "UnauthRoleArn": "arn:aws:iam::559939616475:role/amplify-birdwatcherapp-dev-d4f83-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::559939616475:role/amplify-birdwatcherapp-dev-d4f83-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-birdwatcherapp-dev-d4f83-deployment",
+      "UnauthRoleName": "amplify-birdwatcherapp-dev-d4f83-unauthRole",
+      "StackName": "amplify-birdwatcherapp-dev-d4f83",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:559939616475:stack/amplify-birdwatcherapp-dev-d4f83/001a4bf0-3465-11f0-addc-062d549af5b5",
+      "AmplifyAppId": "d2zi998dqy59u"
+    },
+    "categories": {
+      "function": {
+        "BirdIdentification": {
+          "deploymentBucketName": "amplify-birdwatcherapp-dev-d4f83-deployment",
+          "s3Key": "amplify-builds/BirdIdentification-4664684d64596b6c6671-build.zip"
+        }
+      },
+      "api": {
+        "birdrecognitionapi": {}
+      },
+      "hosting": {
+        "S3AndCloudFront": {}
+      }
+    }
+  }
+}
